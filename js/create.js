@@ -16,3 +16,14 @@ function project(space, client){
 		});
 	});
 }
+
+function newTile(){
+	color = Math.floor(Math.random() * tiles.length);
+	client.matrix = tiles[color];
+	client.input.y = 0;
+	client.input.x = Math.floor(space.length / 2) - Math.floor(client.matrix.length / 2);
+	if(collide(space, client)){
+		var gameOver = document.createTextNode("GAME OVER");
+		document.body.appendChild(gameOver);
+	}
+}
